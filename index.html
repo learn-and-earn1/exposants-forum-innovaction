@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devenez Exposant — Forum Innov'Action 2026</title>
+  <meta name="description" content="Exposez au Forum Innov'Action 2026 et accédez directement à 100 entrepreneurs hybrides qualifiés. 3 formules · 3 niveaux de commandite · 15 kiosques seulement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════ */
+    :root {
+      --bleu:    #1B3A6B;
+      --bleu2:   #0e2147;
+      --or:      #C9A84C;
+      --or2:     #e8c96a;
+      --blanc:   #FFFFFF;
+      --creme:   #FAF8F3;
+      --gris:    #F2F0EB;
+      --texte:   #2c2c2c;
+      --sub:     #777;
+      --bronze:  #A0522D;
+      --or-sp:   #B8860B;
+      --platine: #6B7280;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--texte);
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════
+       STICKY BAR
+    ══════════════════════════════════════ */
+    .sbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(27,58,107,0.97);
+      backdrop-filter: blur(10px);
+      padding: 10px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    .sbar.show { transform: translateY(0); }
+    .sbar-left {
+      font-size: 12px; color: rgba(255,255,255,0.55);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sbar-left strong { color: var(--or); }
+    .sbar-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .sbar-btn {
+      background: var(--or); color: var(--bleu);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 12px;
+      padding: 8px 22px; text-decoration: none;
+      transition: all 0.2s; white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sbar-btn:hover { background: var(--or2); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      background: var(--bleu2);
+      padding: 100px 32px 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 80% at 0% 100%, rgba(27,58,107,0.5) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Lignes décoratives diagonales */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(60deg, transparent, transparent 80px,
+          rgba(201,168,76,0.025) 80px, rgba(201,168,76,0.025) 81px);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--or);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 5px 18px; margin-bottom: 28px;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 900; color: var(--blanc);
+      line-height: 1.05; letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-h1 em { color: var(--or); font-style: italic; }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7; max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    /* KPIs hero */
+    .hero-kpis {
+      display: inline-flex;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(255,255,255,0.04);
+      margin-bottom: 40px;
+    }
+
+    .hero-kpi {
+      padding: 18px 32px;
+      border-right: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .hero-kpi:last-child { border-right: none; }
+
+    .hero-kpi-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 900; color: var(--or);
+      display: block; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-kpi-lbl {
+      font-size: 10px; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--or); color: var(--bleu);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800; font-size: 16px;
+      padding: 18px 48px; text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+      position: relative; overflow: hidden;
+    }
+    .hero-cta::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%,
+        rgba(255,255,255,0.2) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 2.5s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -100% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .hero-cta:hover {
+      background: var(--or2);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(201,168,76,0.5);
+    }
+
+    /* ══════════════════════════════════════
+       POURQUOI EXPOSER
+    ══════════════════════════════════════ */
+    .why {
+      background: var(--blanc);
+      padding: 88px 32px;
+    }
+
+    .section-inner { max-width: 1040px; margin: 0 auto; }
+
+    .section-eyebrow {
+      display: block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 14px;
+    }
+
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900; color: var(--bleu);
+      line-height: 1.15; margin-bottom: 10px;
+    }
+    .section-h2 em { color: var(--or); font-style: italic; }
+
+    .gold-rule {
+      width: 48px; height: 2px;
+      background: var(--or); margin: 20px 0 40px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .why-card {
+      background: var(--gris);
+      padding: 36px 28px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: #ece9e2; }
+
+    .why-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px; font-weight: 900;
+      color: rgba(201,168,76,0.2);
+      line-height: 1; margin-bottom: 16px;
+    }
+
+    .why-titre {
+      font-size: 16px; font-weight: 700;
+      color: var(--bleu); margin-bottom: 8px;
+    }
+
+    .why-desc {
+      font-size: 14px; color: var(--sub); line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════
+       QUI SERA LÀ (AUDIENCE)
+    ══════════════════════════════════════ */
+    .audience {
+      background: var(--bleu);
+      padding: 88px 32px;
+      position: relative; overflow: hidden;
+    }
+
+    .audience::before {
+      content: '100';
+      position: absolute;
+      right: -20px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 300px; font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+
+    .audience .section-h2 { color: var(--blanc); }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      position: relative; z-index: 1;
+    }
+
+    .aud-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 24px 22px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .aud-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .aud-icon {
+      font-size: 28px; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .aud-titre {
+      font-size: 14px; font-weight: 700;
+      color: var(--or); margin-bottom: 4px;
+    }
+
+    .aud-desc {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════
+       FORMULES STANDS
+    ══════════════════════════════════════ */
+    .formules {
+      background: var(--creme);
+      padding: 88px 32px;
+    }
+
+    .formules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .formule-card {
+      background: var(--blanc);
+      border: 1.5px solid #e0ddd6;
+      display: flex; flex-direction: column;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .formule-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(27,58,107,0.1);
+    }
+
+    /* Premium — en évidence */
+    .fc-premium {
+      border: 2px solid var(--or) !important;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.12);
+      transform: translateY(-8px);
+    }
+    .fc-premium:hover { transform: translateY(-14px) !important; }
+
+    .fc-badge {
+      background: linear-gradient(135deg, var(--or), var(--or2));
+      color: var(--bleu);
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      text-align: center; padding: 6px 0;
+    }
+
+    .fc-top { padding: 32px 28px 24px; }
+    .fc-premium .fc-top { padding-top: 24px; }
+
+    .fc-nom {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--bleu); margin-bottom: 16px;
+    }
+
+    .fc-prix-wrap {
+      display: flex; align-items: flex-start;
+      gap: 2px; line-height: 1; margin-bottom: 4px;
+    }
+    .fc-prix {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 5vw, 64px);
+      font-weight: 900; color: var(--bleu); line-height: 1;
+    }
+    .fc-premium .fc-prix { color: var(--or); }
+    .fc-devise-sym {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700;
+      color: var(--bleu); margin-top: 10px;
+    }
+    .fc-premium .fc-devise-sym { color: var(--or); }
+
+    .fc-devise {
+      font-size: 11px; color: #aaa; letter-spacing: 0.04em;
+    }
+
+    .fc-rule {
+      height: 1px; background: #f0ede6;
+      margin: 0 28px;
+    }
+
+    .fc-features {
+      list-style: none;
+      padding: 24px 28px;
+      flex: 1; display: flex;
+      flex-direction: column; gap: 12px;
+    }
+    .fc-features li {
+      font-size: 13.5px; color: #555;
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.45;
+    }
+    .fc-features li::before {
+      content: '✓';
+      color: var(--or); font-weight: 700;
+      font-size: 12px; flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .fc-star { color: var(--or); font-size: 11px; flex-shrink: 0; }
+
+    .fc-bottom { padding: 0 28px 28px; }
+
+    .fc-btn {
+      display: block; width: 100%; text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 14px;
+      padding: 15px 20px; text-decoration: none;
+      transition: all 0.3s; margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .fc-btn-std {
+      background: var(--bleu); color: var(--blanc);
+      box-shadow: 0 4px 16px rgba(27,58,107,0.22);
+    }
+    .fc-btn-std:hover {
+      background: #152d54;
+      box-shadow: 0 8px 28px rgba(27,58,107,0.35);
+      transform: translateY(-1px);
+    }
+    .fc-btn-premium {
+      background: linear-gradient(135deg, #C9A84C 0%, #e8c96a 50%, #C9A84C 100%);
+      background-size: 200% 200%;
+      animation: goldShift 3s ease infinite;
+      color: var(--bleu);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.38);
+    }
+    .fc-btn-premium:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.55);
+      transform: translateY(-1px);
+    }
+    .fc-btn-prestige {
+      background: var(--bleu2); color: var(--blanc);
+      box-shadow: 0 4px 16px rgba(14,33,71,0.3);
+    }
+    .fc-btn-prestige:hover {
+      background: #060d1a;
+      box-shadow: 0 8px 28px rgba(14,33,71,0.45);
+      transform: translateY(-1px);
+    }
+
+    .fc-note {
+      font-size: 11px; color: #aaa; text-align: center;
+    }
+    .fc-note-urgence {
+      color: #c0392b; font-weight: 600;
+    }
+
+    @keyframes goldShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ══════════════════════════════════════
+       TÉMOIGNAGES
+    ══════════════════════════════════════ */
+    .temoignages {
+      background: var(--blanc);
+      padding: 88px 32px;
+    }
+
+    .temo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .temo-card {
+      background: var(--gris);
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    .temo-quote {
+      font-size: 48px;
+      color: rgba(201,168,76,0.25);
+      font-family: 'Playfair Display', serif;
+      line-height: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .temo-texte {
+      font-size: 14px; color: #555;
+      line-height: 1.75; font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .temo-rule {
+      width: 32px; height: 2px;
+      background: var(--or); margin-bottom: 14px;
+    }
+
+    .temo-nom {
+      font-size: 13px; font-weight: 700;
+      color: var(--bleu);
+    }
+    .temo-titre {
+      font-size: 11px; color: var(--sub); margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       SPONSORS
+    ══════════════════════════════════════ */
+    .sponsors {
+      background: var(--bleu2);
+      padding: 88px 32px;
+      position: relative; overflow: hidden;
+    }
+
+    .sponsors::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%,
+        rgba(201,168,76,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .sponsors .section-h2 { color: var(--blanc); }
+    .sponsors .section-eyebrow { margin-bottom: 14px; }
+
+    .sponsors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      position: relative; z-index: 1;
+    }
+
+    .sp-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .sp-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Ligne colorée en haut */
+    .sp-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .sp-bronze::before { background: linear-gradient(90deg, #cd7f32, #e8a87c); }
+    .sp-or::before    { background: linear-gradient(90deg, #C9A84C, #e8c96a); }
+    .sp-platine::before { background: linear-gradient(90deg, #9ca3af, #d1d5db); }
+
+    .sp-bronze { border-color: rgba(205,127,50,0.25); }
+    .sp-or     { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.05); }
+    .sp-platine { border-color: rgba(156,163,175,0.25); }
+
+    .sp-medal { font-size: 32px; margin-bottom: 14px; display: block; }
+
+    .sp-niveau {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .sp-bronze .sp-niveau { color: #cd7f32; }
+    .sp-or .sp-niveau     { color: var(--or); }
+    .sp-platine .sp-niveau { color: #9ca3af; }
+
+    .sp-prix {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px; font-weight: 900;
+      color: var(--blanc); margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .sp-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .sp-features li {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      display: flex; align-items: flex-start; gap: 8px;
+      line-height: 1.45;
+    }
+    .sp-features li::before {
+      content: '→';
+      color: rgba(201,168,76,0.6);
+      font-weight: 700; flex-shrink: 0;
+    }
+
+    .sp-btn {
+      display: block; text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 13px;
+      padding: 12px 20px; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.7);
+      transition: all 0.3s;
+    }
+    .sp-btn:hover {
+      border-color: var(--or);
+      color: var(--or);
+      background: rgba(201,168,76,0.06);
+    }
+
+    /* ══════════════════════════════════════
+       CTA FORMULAIRE
+    ══════════════════════════════════════ */
+    .cta-form {
+      background: var(--creme);
+      padding: 96px 32px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cta-form::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%,
+        rgba(27,58,107,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-form-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .cta-form-pre {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 16px; display: block;
+    }
+
+    .cta-form-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 900; color: var(--bleu);
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .cta-form-h2 em { color: var(--or); font-style: italic; }
+
+    .cta-form-sub {
+      font-size: 15px; color: var(--sub);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+
+    .cta-form-btns {
+      display: flex; gap: 14px;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn-main-cta {
+      display: inline-block;
+      background: var(--bleu); color: var(--blanc);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800; font-size: 16px;
+      padding: 18px 44px; text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 6px 24px rgba(27,58,107,0.25);
+    }
+    .btn-main-cta:hover {
+      background: var(--bleu2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(27,58,107,0.38);
+    }
+
+    .btn-sec-cta {
+      display: inline-block;
+      border: 1.5px solid rgba(27,58,107,0.25);
+      color: var(--bleu);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 15px;
+      padding: 18px 32px; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-sec-cta:hover {
+      border-color: var(--or); color: var(--or);
+    }
+
+    .cta-form-note {
+      font-size: 12px; color: #aaa; margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: var(--bleu2);
+      padding: 32px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--blanc); margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--or); font-style: italic; }
+    .footer-links {
+      display: flex; gap: 24px; justify-content: center;
+      flex-wrap: wrap; margin: 10px 0;
+    }
+    .footer-links a {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--or); }
+    .footer-copy {
+      font-size: 11px; color: rgba(255,255,255,0.15);
+    }
+
+    /* ══════════════════════════════════════
+       REVEAL
+    ══════════════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .why-grid, .formules-grid, .sponsors-grid, .temo-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px; margin: 0 auto;
+      }
+      .audience-grid { grid-template-columns: 1fr; }
+      .fc-premium { transform: none; }
+      .fc-premium:hover { transform: translateY(-6px) !important; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 80px 20px 60px; }
+      .hero-kpis { flex-direction: column; border: none; }
+      .hero-kpi { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.15); }
+      .hero-kpi:last-child { border-bottom: none; }
+      .cta-form-btns { flex-direction: column; align-items: center; }
+      .sbar { padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY BAR -->
+  <div class="sbar" id="sbar">
+    <div class="sbar-left">
+      <strong>Forum Innov'Action 2026</strong>
+      <div class="sbar-dot"></div>
+      <span>24 octobre · Espace Jardin · Université Laval</span>
+    </div>
+    <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="sbar-btn">Réserver mon kiosque</a>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Exposants · Forum Innov'Action 2026</div>
+      <h1 class="hero-h1">
+        Votre marque devant<br>
+        <em>100 décideurs actifs.</em>
+      </h1>
+      <p class="hero-sub">
+        Une journée entière pour vous faire connaître, créer des connexions réelles
+        et générer des opportunités concrètes — au cœur d'une communauté d'entrepreneurs hybrides engagés.
+      </p>
+
+      <div class="hero-kpis">
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">100</span>
+          <span class="hero-kpi-lbl">Entrepreneurs dans la salle</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">15</span>
+          <span class="hero-kpi-lbl">Kiosques disponibles</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">4</span>
+          <span class="hero-kpi-lbl">Moments de réseautage</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-num">8h</span>
+          <span class="hero-kpi-lbl">De visibilité en direct</span>
+        </div>
+      </div>
+
+      <a href="#formules" class="hero-cta">Voir les formules exposant →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════ POURQUOI EXPOSER ═══════════ -->
+  <section class="why">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal">Pourquoi être là</span>
+      <h2 class="section-h2 reveal">Ce que vous obtenez<br><em>en tant qu'exposant</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <div class="why-titre">Un public ultra-qualifié</div>
+          <div class="why-desc">100 entrepreneurs hybrides actifs, décideurs de leur propre budget. Ils cherchent des solutions, des outils et des partenaires — pas des curieux.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <div class="why-titre">Une visibilité multi-niveaux</div>
+          <div class="why-desc">Logo dans le programme officiel, mention en ouverture, présentation devant la salle, visibilité sur les plateformes MG Business Group.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <div class="why-titre">Des connexions qui durent</div>
+          <div class="why-desc">4 pauses réseautage dédiées dans la journée. Des échanges en face à face dans un cadre conçu pour que les conversations aillent loin.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">04</div>
+          <div class="why-titre">Un ROI mesurable</div>
+          <div class="why-desc">À partir de 295$ pour accéder à 100 entrepreneurs qualifiés. Une publicité qui toucherait le même nombre de décideurs ciblés coûterait bien davantage.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">05</div>
+          <div class="why-titre">Le Prix du Forum inclus</div>
+          <div class="why-desc">Toutes les formules incluent le Prix du Forum Innov'Action et la visibilité sur les plateformes officielles de MG Business Group.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">06</div>
+          <div class="why-titre">Un cadre qui vous valorise</div>
+          <div class="why-desc">L'Espace Jardin de l'Université Laval. Un environnement professionnel, élégant, qui donne de la valeur à votre présence.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ AUDIENCE ═══════════ -->
+  <section class="audience">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal">Votre public</span>
+      <h2 class="section-h2 reveal">Qui sera <em>dans la salle</em> ?</h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="audience-grid reveal">
+        <div class="aud-card">
+          <div class="aud-icon">💼</div>
+          <div>
+            <div class="aud-titre">Entrepreneurs hybrides actifs</div>
+            <div class="aud-desc">Ils jonglent entre plusieurs activités et investissent dans leur développement. Ce sont des acheteurs potentiels, pas des spectateurs.</div>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🚀</div>
+          <div>
+            <div class="aud-titre">Porteurs de projets en croissance</div>
+            <div class="aud-desc">Projets entre 1 et 5 ans, premiers revenus établis, à la recherche de partenaires, d'outils et de services pour accélérer.</div>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🎯</div>
+          <div>
+            <div class="aud-titre">Professionnels en reconversion</div>
+            <div class="aud-desc">Salariés qui lancent leur activité parallèle. Budget disponible, motivés, ouverts aux nouvelles solutions et aux investissements.</div>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🌍</div>
+          <div>
+            <div class="aud-titre">Communauté francophone du Québec</div>
+            <div class="aud-desc">Entrepreneurs de Québec City, Lévis, Montréal et de la province — une communauté francophone soudée et active.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FORMULES ═══════════ -->
+  <section class="formules" id="formules">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal">Nos formules</span>
+      <h2 class="section-h2 reveal">Choisissez votre<br><em>niveau de visibilité</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="formules-grid reveal">
+
+        <!-- ESSENTIEL -->
+        <div class="formule-card">
+          <div class="fc-top">
+            <div class="fc-nom">Essentiel</div>
+            <div class="fc-prix-wrap">
+              <span class="fc-prix">295</span>
+              <span class="fc-devise-sym">$</span>
+            </div>
+            <div class="fc-devise">CAD + taxes</div>
+          </div>
+          <div class="fc-rule"></div>
+          <ul class="fc-features">
+            <li>Kiosque dédié — table + 2 chaises</li>
+            <li>Logo dans le programme officiel imprimé</li>
+            <li>Visibilité sur les plateformes MG Business Group</li>
+            <li>Prix du Forum Innov'Action inclus</li>
+            <li>Accès aux 4 pauses réseautage</li>
+            <li>Accès au cocktail de clôture</li>
+          </ul>
+          <div class="fc-bottom">
+            <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="fc-btn fc-btn-std">→ Réserver ce kiosque</a>
+            <p class="fc-note fc-note-urgence">⚠️ 15 kiosques seulement</p>
+          </div>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="formule-card fc-premium">
+          <div class="fc-badge">⭐ POPULAIRE</div>
+          <div class="fc-top">
+            <div class="fc-nom" style="color:var(--or);">Premium</div>
+            <div class="fc-prix-wrap">
+              <span class="fc-prix">495</span>
+              <span class="fc-devise-sym">$</span>
+            </div>
+            <div class="fc-devise">CAD + taxes</div>
+          </div>
+          <div class="fc-rule" style="background:rgba(201,168,76,0.2);"></div>
+          <ul class="fc-features">
+            <li>Tout de la formule Essentiel</li>
+            <li><span class="fc-star">✦</span> Présentation 2 min au dîner d'affaires</li>
+            <li><span class="fc-star">✦</span> Mention spéciale sur les réseaux sociaux MG</li>
+            <li><span class="fc-star">✦</span> 1 Billet Standard inclus (valeur 125 $)</li>
+            <li><span class="fc-star">✦</span> Emplacement privilégié dans la salle</li>
+          </ul>
+          <div class="fc-bottom">
+            <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="fc-btn fc-btn-premium">→ Réserver ce kiosque</a>
+            <p class="fc-note fc-note-urgence">⚠️ Places limitées</p>
+          </div>
+        </div>
+
+        <!-- PRESTIGE -->
+        <div class="formule-card">
+          <div class="fc-top">
+            <div class="fc-nom">Prestige</div>
+            <div class="fc-prix-wrap">
+              <span class="fc-prix">995</span>
+              <span class="fc-devise-sym">$</span>
+            </div>
+            <div class="fc-devise">CAD + taxes</div>
+          </div>
+          <div class="fc-rule"></div>
+          <ul class="fc-features">
+            <li>Tout de la formule Premium</li>
+            <li><span class="fc-star">✦</span> Présentation 5 min en plénière</li>
+            <li><span class="fc-star">✦</span> Logo sur bannières et supports visuels</li>
+            <li><span class="fc-star">✦</span> 2 Billets VIP inclus (valeur 590 $)</li>
+            <li><span class="fc-star">✦</span> Interview vidéo publiée post-événement</li>
+          </ul>
+          <div class="fc-bottom">
+            <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="fc-btn fc-btn-prestige">→ Réserver ce kiosque</a>
+            <p class="fc-note">Expérience complète</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TÉMOIGNAGES ═══════════ -->
+  <section class="temoignages">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal">Ce qu'ils en disent</span>
+      <h2 class="section-h2 reveal">Les exposants de<br><em>l'édition 2025</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="temo-grid reveal">
+        <div class="temo-card">
+          <div class="temo-quote">"</div>
+          <p class="temo-texte">J'ai eu plus de conversations qualifiées en une journée au Forum qu'en trois mois sur les réseaux sociaux. Des gens vraiment intéressés, qui cherchaient exactement ce que j'offre.</p>
+          <div class="temo-rule"></div>
+          <div class="temo-nom">Entreprise exposante — Édition 2025</div>
+          <div class="temo-titre">Services aux entrepreneurs · Québec City</div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote">"</div>
+          <p class="temo-texte">La présentation de 2 minutes au lunch a tout changé. J'ai eu 8 cartes de visite dans les 20 minutes qui ont suivi. Deux ont débouché sur des collaborations concrètes.</p>
+          <div class="temo-rule"></div>
+          <div class="temo-nom">Exposante formule Premium — Édition 2025</div>
+          <div class="temo-titre">Coaching & Formation · Lévis</div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote">"</div>
+          <p class="temo-texte">Le retour sur investissement a été immédiat. L'ambiance est bienveillante, le public est engagé, et l'organisation impeccable. On sera là en 2026 sans hésiter.</p>
+          <div class="temo-rule"></div>
+          <div class="temo-nom">Exposant formule Essentiel — Édition 2025</div>
+          <div class="temo-titre">Agence digitale · Québec</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SPONSORS ═══════════ -->
+  <section class="sponsors" id="sponsors">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal">Commandites</span>
+      <h2 class="section-h2 reveal">Devenez<br><em>commanditaire</em></h2>
+      <div class="gold-rule reveal"></div>
+      <p style="color:rgba(255,255,255,0.45);font-size:15px;max-width:560px;line-height:1.7;margin-bottom:44px;" class="reveal">
+        Une visibilité qui dépasse le jour J — avant, pendant et après le Forum Innov'Action 2026.
+      </p>
+
+      <div class="sponsors-grid reveal">
+
+        <div class="sp-card sp-bronze">
+          <span class="sp-medal">🥉</span>
+          <div class="sp-niveau">Bronze</div>
+          <div class="sp-prix">1 499 $</div>
+          <ul class="sp-features">
+            <li>Logo sur tous les supports visuels</li>
+            <li>Mention officielle en ouverture</li>
+            <li>Post dédié sur les réseaux sociaux MG</li>
+            <li>Logo dans le programme officiel</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="sp-btn">→ Nous contacter</a>
+        </div>
+
+        <div class="sp-card sp-or">
+          <span class="sp-medal">🥇</span>
+          <div class="sp-niveau">Or</div>
+          <div class="sp-prix">2 999 $</div>
+          <ul class="sp-features">
+            <li>Tout du niveau Bronze</li>
+            <li>Bannière événement · logo en grand format</li>
+            <li>Présentation 3 min en plénière</li>
+            <li>2 Billets VIP inclus (valeur 590 $)</li>
+            <li>Contenu co-brandé post-événement</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="sp-btn">→ Nous contacter</a>
+        </div>
+
+        <div class="sp-card sp-platine">
+          <span class="sp-medal">💎</span>
+          <div class="sp-niveau">Platine</div>
+          <div class="sp-prix">5 499 $</div>
+          <ul class="sp-features">
+            <li>Tout du niveau Or</li>
+            <li>Naming exclusif d'une session conférence</li>
+            <li>Vidéo dédiée publiée post-événement</li>
+            <li>4 Billets VIP inclus (valeur 1 180 $)</li>
+            <li>Partenariat prioritaire Pitch Day 2027</li>
+            <li>Espace brandé exclusif dans la salle</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="sp-btn">→ Nous contacter</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA FORMULAIRE ═══════════ -->
+  <section class="cta-form">
+    <div class="cta-form-inner">
+      <span class="cta-form-pre reveal">Prenez votre place dès maintenant</span>
+      <h2 class="cta-form-h2 reveal">15 kiosques.<br><em>Pas un de plus.</em></h2>
+      <p class="cta-form-sub reveal">
+        Remplissez le formulaire en ligne pour soumettre votre candidature. Notre équipe vous revient sous 48h pour confirmer votre place et vous donner les prochaines étapes.
+      </p>
+      <div class="cta-form-btns reveal">
+        <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="btn-main-cta">
+          → Remplir le formulaire d'inscription
+        </a>
+        <a href="DossierExposant_ForumInnovAction2026.pdf" target="_blank" class="btn-sec-cta">
+          📄 Télécharger le dossier complet
+        </a>
+      </div>
+      <p class="cta-form-note reveal">
+        📍 Espace Jardin · Université Laval · Québec · Samedi 24 octobre 2026 · 10h00 à 18h30
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="footer-logo">Forum <span>Innov'Action</span> 2026</div>
+    <div class="footer-links">
+      <a href="forum-innovaction-2026.html">← Retour à la page du Forum</a>
+      <a href="mailto:contact@mgbusinessgroups.com">contact@mgbusinessgroups.com</a>
+      <a href="tel:+14182646324">418-264-6324</a>
+      <a href="#">Politique de confidentialité</a>
+    </div>
+    <div class="footer-copy">© 2026 MG Business Group Inc. · www.foruminnov.ca · www.mgbusinessgroups.com</div>
+  </footer>
+
+  <script>
+    // Sticky bar
+    window.addEventListener('scroll', () => {
+      document.getElementById('sbar').classList.toggle('show', window.scrollY > 600);
+    });
+
+    // Reveal au scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
